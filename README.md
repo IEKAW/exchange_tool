@@ -1,7 +1,8 @@
 # exchange_tool
 
 exchange csv download tool
-python project -version 2.7.9
+
+python version is  2.7.9
 
 # Django installation
 - use virtualenv of pyenv
