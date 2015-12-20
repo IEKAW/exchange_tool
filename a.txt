@@ -1,0 +1,15 @@
+diff --git a/db.sqlite3 b/db.sqlite3
+index 748753c..0cbbd3a 100644
+Binary files a/db.sqlite3 and b/db.sqlite3 differ
+diff --git a/exchange/__init__.pyc b/exchange/__init__.pyc
+index efe248b..08c6a06 100644
+Binary files a/exchange/__init__.pyc and b/exchange/__init__.pyc differ
+diff --git a/exchange/settings.pyc b/exchange/settings.pyc
+index 40693e1..14da462 100644
+Binary files a/exchange/settings.pyc and b/exchange/settings.pyc differ
+diff --git a/exchange/urls.pyc b/exchange/urls.pyc
+index 07a2916..4103912 100644
+Binary files a/exchange/urls.pyc and b/exchange/urls.pyc differ
+diff --git a/exchange/wsgi.pyc b/exchange/wsgi.pyc
+index fbcd13d..861f103 100644
+Binary files a/exchange/wsgi.pyc and b/exchange/wsgi.pyc differ
