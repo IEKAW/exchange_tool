@@ -1,3 +1,4 @@
+# coding: utf8
 """
 Django settings for exchange project.
 
@@ -12,6 +13,17 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from os.path import abspath, dirname
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# プロジェクトのルートをSITE_ROOTとする
+SITE_ROOT = abspath(os.path.join(dirname(__file__), ".."))
+# 静的ファイルを保存するフォルダ名を設定
+STATIC_URL = '/static/'
+# 静的ファイルを保存するフォルダのパスを設定
+STATICFILES_DIRS = (
+    os.path.join(SITE_ROOT, '/manidata/static'),
+)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -80,6 +92,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'exchange',
         'USER': 'root',
+        'PASSWORD': '060510shiba',
         'HOST': 'localhost',
         'PORT': '3306'
     }

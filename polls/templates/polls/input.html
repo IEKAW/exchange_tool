@@ -1,0 +1,78 @@
+{% extends "layouts/base.html" %}
+{% block title %} Home {% endblock %}
+{% block content %}
+    <div class="container">
+  <form action="." method="get">
+      <div class="form-group">
+            <div class="row">
+                <div class="col-xs-2">
+                    <label>運用人数:</label>
+                </div>
+                <div class="col-xs-4">
+                    {% if num == 0 %}
+                        <input type="text" name="num" class="form-control">
+                    {% else %}
+                         <input type="text" name="num" class="form-control" value="{{ num }}">
+                    {% endif %}
+                </div>
+                人
+            </div>
+        </div>
+	<input type="submit" value="開く" class="form-control" style="width:20%">
+  </form>
+<form method="post" action="export.csv">
+    <!--これを入れないとPOSTできない -->
+    {% csrf_token %}
+    <input type="hidden" value="{{ num }}" name="num"/>
+    <input type="hidden" value="0" name="flag"/>
+    <div class="col-lg-6">
+    {% for x in a %}
+{{ x }}.
+    <div class="form-group">
+        <div class="row">
+                <div class="col-xs-2">
+                <label>運用開始</label>
+                </div>
+            </div>
+            <div class="col-xs-4">
+	            <input type="date" name="start{{ x }}" class="form-control">
+            </div><br/><br/>
+        <div class="row">
+                <div class="col-xs-2">
+  	                <label>運用終了</label>
+                </div>
+        </div>
+        <div class="col-xs-4">
+  	        <input type="date" name="fin{{ x }}" class="form-control">
+        </div>
+        <br/><br/>
+        <div class="row">
+                <div class="col-xs-2">
+  	                <label>運用賃金</label>
+                </div>
+        </div>
+        <div class="col-xs-4">
+  	        <input type="number" name="sikin{{ x }}" class="form-control">
+        </div>
+        <br/><br/>
+        <div class="row">
+                <div class="col-xs-2">
+                    <label>契約条件</label>
+                </div>
+        </div>
+        <div class="col-xs-4">
+            <input type="radio" name="condition{{ x }}" value="0"> 月固定
+            <input type="radio" name="condition{{ x }}" value="1"> 年固定
+            <input type="radio" name="condition{{ x }}" value="2"> 利益:<input type="number" placeholder="%" name="unnyou{{ x }}">
+        </div>
+    <br/><br/>
+    </div>
+        <br/><br/>
+    {% endfor %}
+    <input type="submit" value="送信" class="form-control" style="width:10%;">
+    </div>
+</form>
+    </div>
+ {% endblock %}
+
+

@@ -1,0 +1,64 @@
+{% extends "layouts/base.html" %}
+{% block title %} Home {% endblock %}
+{% block content %}
+    <div class="container">
+    <form method="post" action="export.csv" enctype="multipart/form-data">
+    <!--これを入れないとPOSTできない -->
+    {% csrf_token %}
+    {% for person in persons %}
+        <input type="hidden" name="start{{ person.id }}" value="{{ person.start }}"/>
+        <input type="hidden" name="fin{{ person.id }}" value="{{ person.fin }}"/>
+        <input type="hidden" name="sikin{{ person.id }}" value="{{ person.sikin }}"/>
+        <input type="hidden" name="condition{{ person.id }}" value="{{ person.condition }}"/>
+        <input type="hidden" name="unnyou{{ person.id }}" value="{{ person.unnyou }}"/>
+    {% endfor %}
+        <input type="hidden" name="flag" value="1"/>
+        <input type="hidden" name="num" value="{{ num }}"/>
+    <div class="col-lg-6">
+            <input type="hidden" name="num" value="{{ num }}"/>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-2">
+                    <label>計算開始日時:</label>
+                </div>
+                <div class="col-xs-4">
+                    <input type="date" name="start" class="form-control">
+                </div>
+            </div>
+        </div>
+         <div class="form-group">
+            <div class="row">
+                <div class="col-xs-2">
+                    <label>計算終了日時:</label>
+                </div>
+                <div class="col-xs-4">
+                    <input type="date" name="end" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-2">
+                    <label>ひろせ:</label>
+                </div>
+                <div class="col-xs-8">
+                    <input type="file" name="hirose">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-2">
+                    <label>SBI:</label>
+                </div>
+                <div class="col-xs-8">
+                    <input type="file" name="sbi">
+                </div>
+            </div>
+        </div>
+        <input type="submit" value="送信" class="form-control" style="width:10%;">
+    </div>
+
+</form>
+    </div>
+ {% endblock %}
